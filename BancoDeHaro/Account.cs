@@ -6,14 +6,16 @@ namespace BancoDeHaro
 {
      public class Account
     {
-        public float _Amount;
-        public float _Debt;
+        public double _Amount;
+        public double _Debt;
         public int _Number;
 
         public Account(float amount)
         {
             _Amount = amount;
-            _Nuber = 
+            var random = new Random();
+            _Number = random.Next();
+            _Debt = 0;
         }
 
 
