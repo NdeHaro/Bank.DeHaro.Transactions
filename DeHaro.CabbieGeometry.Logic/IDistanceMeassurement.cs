@@ -6,6 +6,6 @@ namespace DeHaro.CabbieGeometry.Logic
 {
     interface IDistanceMeassurement
     {
-        public void calculate();
+        public int calculate();
     }
 }

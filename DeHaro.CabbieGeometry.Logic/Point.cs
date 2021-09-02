@@ -4,12 +4,12 @@ using System.Text;
 
 namespace DeHaro.CabbieGeometry.Logic
 {
-    class Point2
+    class Point
     {
-        private readonly int _x;
-        private readonly int _y;
+        private int _x;
+        private int _y;
 
-        public Point2(int x, int y)
+        public Point(int x, int y)
         {
             _x = x;
             _y = y;
