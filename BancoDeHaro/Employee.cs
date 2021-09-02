@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace BancoDeHaro
+namespace DeHaro.Bank.Transactions
 {
     class Employee
     {
@@ -19,6 +19,9 @@ namespace BancoDeHaro
             _EmplNum = new Random().Next();
         }
 
+        /// <summary>
+        /// Inizialize an Account with 0$
+        /// </summary>
         private void openAccount()
         {
             _Account = new Account(0);

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace BancoDeHaro
+namespace DeHaro.Bank.Transactions
 {
     class NotificationService
     {

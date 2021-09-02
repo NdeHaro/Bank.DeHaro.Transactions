@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace BancoDeHaro
+namespace DeHaro.Bank.Transactions
 {
     class Program
     {
@@ -30,6 +30,10 @@ namespace BancoDeHaro
 
             //Client1 send money to client2
             CService.passMoney(Client1, Client2, 1250, NService, BService);
+
+
+            Console.WriteLine("NEW AMOUNT: " + Client1._Name + " has " + Client1._Account._Amount + "$");
+            Console.WriteLine("NEW AMOUNT: " + Client2._Name + " has " + Client2._Account._Amount + "$");
         }
     }
 }
