@@ -14,7 +14,8 @@ namespace BancoDeHaro
                 ClientSender._Account._Amount -= quantity;
                 ClientReceiver._Account._Amount += quantity;
                 // Bank send the message
-                nServ.sendSms(ClientReceiver, ", someone sent you " + quantity + "$");
+                nServ.sendSms(ClientReceiver, ", " + ClientSender._Name + " sent you " + quantity + "$");
+                nServ.sendSms(ClientSender, ", you sent " + quantity + "$ to " + ClientReceiver._Name);
             }
             else
             {
@@ -40,21 +41,24 @@ namespace BancoDeHaro
             return Employee;
         }
 
-        public double CalculateTaxes(Client client)
+        public void CalculateTaxes(Client client)
         {
             double tax = 100;
 
             int amount = (int) client._Account._Amount / 10;
 
-            double FinalAmount = amount * 0.1;
+            double FinalAmount = amount * 0.01;
 
             tax -= FinalAmount;
             if (tax > 0)
             {
-                return tax;
+                client._Account._Taxes = tax;
+            }
+            else
+            {
+                client._Account._Taxes = 0;
             }
 
-            return 0;
         }
 
         public void AddMoney(Client Client, double Amount)
