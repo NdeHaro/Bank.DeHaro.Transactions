@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DeHaro.Bank.Transactions.Interface;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -16,7 +17,7 @@ namespace DeHaro.Bank.Transactions
         {
            BService.CalculateTaxes(Client);
         }
-        public void passMoney(Client ClientSender, Client ClientReceiver, double quantity, NotificationService nServ,
+        public void passMoney(Client ClientSender, Client ClientReceiver, double quantity, ISendable nServ,
                                 BankTransactionService BService)
         {
 

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using DeHaro.Bank.Transactions.Interface;
+using DeHaro.Bank.Transactions.Services;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -15,7 +17,7 @@ namespace DeHaro.Bank.Transactions
         /// <param name="ClientReceiver">Client who receives money</param>
         /// <param name="quantity">Quantity of money</param>
         /// <param name="nServ">Class to notifications</param>
-        public void PassMoney(Client ClientSender, Client ClientReceiver, double quantity, NotificationService nServ)
+        public void PassMoney(Client ClientSender, Client ClientReceiver, double quantity, ISendable nServ)
         {
             if (ClientSender._Account._Amount >= quantity)
             {
@@ -24,8 +26,8 @@ namespace DeHaro.Bank.Transactions
                 /*ClientSender._Account._Amount -= quantity;
                 ClientReceiver._Account._Amount += quantity;*/
                 // Bank send the message
-                nServ.sendSms(ClientReceiver, ", " + ClientSender._Name + " sent you " + quantity + "$");
-                nServ.sendSms(ClientSender, ", you sent " + quantity + "$ to " + ClientReceiver._Name);
+                nServ.Send(ClientReceiver, ", " + ClientSender._Name + " sent you " + quantity + "$");
+                nServ.Send(ClientSender, ", you sent " + quantity + "$ to " + ClientReceiver._Name);
             }
             else
             {
@@ -40,12 +42,12 @@ namespace DeHaro.Bank.Transactions
         /// <param name="Pass">Pass of User</param>
         /// <param name="nServ">Class to notifications</param>
         /// <returns>Client created</returns>
-        public Client RegisterUser(String Name, String Pass, NotificationService nServ)
+        public Client RegisterUser(String Name, String Pass, ISendable nServ)
         {
             //New Client
             var Client = new Client(Name, Pass);
             // Bank send the message
-            nServ.sendSms(Client, ", you created an account of client.");
+            nServ.Send(Client, ", you created an account of client.");
             return Client;
         }
 
@@ -56,12 +58,12 @@ namespace DeHaro.Bank.Transactions
         /// <param name="Pass">Pass of User</param>
         /// <param name="nServ">Class to notifications</param>
         /// <returns>Employee created</returns>
-        public Employee RegisterEmployee(String Name, String Pass, NotificationService nServ)
+        public Employee RegisterEmployee(String Name, String Pass, ISendable nServ)
         {
             //New Client
             var Employee = new Employee(Name, Pass);
             // Bank send the message
-            nServ.sendSms(Employee, ", you created an account of employee.");
+            nServ.Send(Employee, ", you created an account of employee.");
             return Employee;
         }
 

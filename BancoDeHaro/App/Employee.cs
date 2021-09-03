@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DeHaro.Bank.Transactions
 {
-    class Employee
+    public class Employee
     {
         public string _Name;
         public Account _Account;

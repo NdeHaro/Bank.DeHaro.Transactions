@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DeHaro.Bank.Transactions.Interface;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -14,7 +15,7 @@ namespace DeHaro.Bank.Transactions
         /// <param name="quantity">How much is passing</param>
         /// <param name="nServ"> Allows server to pass msgs</param>
         /// <param name="BService">Allows client conectate to BankService and send money.</param>
-        public void passMoney(Client ClientSender, Client ClientReceiver, double quantity, NotificationService nServ,
+        public void passMoney(Client ClientSender, Client ClientReceiver, double quantity, ISendable nServ,
                                 BankTransactionService BService)
         {
          

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using DeHaro.Bank.Transactions.Interface;
+using DeHaro.Bank.Transactions.Services;
+using System;
 
 namespace DeHaro.Bank.Transactions
 {
@@ -7,10 +9,11 @@ namespace DeHaro.Bank.Transactions
         static void Main(string[] args)
         {
             var BService = new BankTransactionService();
-            var NService = new NotificationService();
+            ISendable NService;
             var CService = new ClientService();
             var EService = new EmployeeService();
 
+            NService = new EmailService();
             var Client1 = BService.RegisterUser("Nachi", "1234", NService);
             var Client2 = BService.RegisterUser("Raul", "4321", NService);
             var Employee = BService.RegisterEmployee("Edu", "1221", NService);
@@ -29,6 +32,7 @@ namespace DeHaro.Bank.Transactions
             Console.WriteLine(Client2._Name + " have to pay " + Client2._Account._Taxes + "$ mensually.");
 
             //Client1 send money to client2
+            NService = new SmsService();
             CService.passMoney(Client1, Client2, 1250, NService, BService);
 
 
